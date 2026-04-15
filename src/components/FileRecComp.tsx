@@ -7,6 +7,7 @@ import { useFileTreeDispatch } from "../app/hooks";
 import { useSelector } from "react-redux";
 import {
   selectFileTreeRed,
+  setOnClickedFile,
   setOpenedFiles,
 } from "../features/fileTree/fileTree";
 import { isFileExit } from "../utils";
@@ -21,7 +22,16 @@ function FileRecComp({ filetree }: IFileComponentProps) {
   const fileDispatch = useFileTreeDispatch();
 
   const handelFileclick = () => {
+    fileDispatch(
+      setOnClickedFile({
+        activeTabId: filetree.id,
+        fileContent: filetree.content,
+        fileName: filetree.name,
+      }),
+    );
+
     if (isFileExit(openedFiles, filetree.id)) return;
+
     fileDispatch(setOpenedFiles(filetree));
   };
   return (
