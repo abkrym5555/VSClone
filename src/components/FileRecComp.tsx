@@ -1,9 +1,8 @@
 import { useState } from "react";
 import type { IFile } from "../interfaces";
-import FileIcon from "./SVG/FileIcon";
-import FolderIcon from "./SVG/FolderIcon";
 import RightArrowIcon from "./SVG/RightArrowIcon";
 import BottomIcon from "./SVG/BottomIcon";
+import RenderFileIcon from "./RenderFileIcon";
 
 interface IFileComponentProps {
   filetree: IFile;
@@ -17,13 +16,22 @@ function FileRecComp({ filetree }: IFileComponentProps) {
         {filetree.isFolder ? (
           <div className="flex gap-2" onClick={() => setIsopen((pr) => !pr)}>
             {isopen ? <BottomIcon /> : <RightArrowIcon />}
-            <FolderIcon />
+            <RenderFileIcon
+              fname={filetree.name}
+              isfolder={filetree.isFolder}
+              isopen={isopen}
+            />
             <span>{filetree.name}</span>
           </div>
         ) : (
           <>
             <span className="ml-5"></span>
-            <FileIcon />
+            <RenderFileIcon
+              fname={filetree.name}
+              isfolder={filetree.isFolder}
+              isopen={isopen}
+            />
+
             <span>{filetree.name}</span>
           </>
         )}
