@@ -32,7 +32,7 @@ function FileRecComp({ filetree }: IFileComponentProps) {
 
     if (isFileExit(openedFiles, filetree.id)) return;
 
-    fileDispatch(setOpenedFiles(filetree));
+    fileDispatch(setOpenedFiles([...openedFiles, filetree]));
   };
   return (
     <div className="cursor-pointer ml-2">

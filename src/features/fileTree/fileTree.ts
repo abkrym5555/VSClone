@@ -25,8 +25,8 @@ const fileTreeSlice = createSlice({
   name: "fileTreeRed",
   initialState,
   reducers: {
-    setOpenedFiles: (state, action: PayloadAction<IFile>) => {
-      state.openedFiles = [...state.openedFiles, action.payload];
+    setOpenedFiles: (state, action: PayloadAction<IFile[]>) => {
+      state.openedFiles = action.payload;
     },
     setOnClickedFile: (state, action: PayloadAction<IClickedFile>) => {
       state.clickedFile.fileName = action.payload.fileName;

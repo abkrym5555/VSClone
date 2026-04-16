@@ -4,6 +4,7 @@ import CloseIcon from "./SVG/CloseIcon";
 import {
   selectFileTreeRed,
   setOnClickedFile,
+  setOpenedFiles,
 } from "../features/fileTree/fileTree";
 import { useFileTreeDispatch } from "../app/hooks";
 import { useSelector } from "react-redux";
@@ -14,7 +15,7 @@ interface IProps {
 
 const FileBarItem = ({ file }: IProps) => {
   const fileDispatch = useFileTreeDispatch();
-  const { clickedFile } = useSelector(selectFileTreeRed);
+  const { clickedFile, openedFiles } = useSelector(selectFileTreeRed);
 
   const handelOnClick = () => {
     const { name, content } = file;
@@ -26,6 +27,13 @@ const FileBarItem = ({ file }: IProps) => {
       }),
     );
   };
+
+  const handelRemoveItemBar = () => {
+    const newBarItems = openedFiles.filter((fl) => fl.id !== file.id);
+    console.log(newBarItems);
+    fileDispatch(setOpenedFiles(newBarItems));
+  };
+
   return (
     <div
       className={`max-w-3xl flex items-center p-2  border-t-2 ${clickedFile.activeTabId === file.id ? "border-cyan-700" : "border-transparent"}`}
@@ -35,7 +43,13 @@ const FileBarItem = ({ file }: IProps) => {
       <span className="cursor-pointer duration-300 flex justify-center items-center w-fit mx-2 p-1 rounded-md">
         {file.name}
       </span>
-      <span className="cursor-pointer hover:bg-[#64646473] duration-300 flex justify-center items-center w-fit mr-2 p-1 rounded-md">
+      <span
+        onClick={(e) => {
+          e.stopPropagation();
+          handelRemoveItemBar();
+        }}
+        className="cursor-pointer hover:bg-[#64646473] duration-300 flex justify-center items-center w-fit mr-2 p-1 rounded-md"
+      >
         <CloseIcon />
       </span>
     </div>
