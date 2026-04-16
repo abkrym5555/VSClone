@@ -16,7 +16,7 @@ function FileSyntaxHilighter({ code }: ISyntaxHilighterProps) {
         fontSize: "1.2rem",
       }}
     >
-      {String(code)}
+      {code ? String(code) : ""}
     </SyntaxHighlighter>
   );
 }

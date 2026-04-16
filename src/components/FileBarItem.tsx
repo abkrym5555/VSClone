@@ -30,8 +30,15 @@ const FileBarItem = ({ file }: IProps) => {
 
   const handelRemoveItemBar = () => {
     const newBarItems = openedFiles.filter((fl) => fl.id !== file.id);
-    console.log(newBarItems);
     fileDispatch(setOpenedFiles(newBarItems));
+    const last = newBarItems[newBarItems.length - 1];
+    fileDispatch(
+      setOnClickedFile({
+        activeTabId: last?.id,
+        fileContent: last?.content,
+        fileName: last?.name,
+      }),
+    );
   };
 
   return (

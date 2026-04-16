@@ -13,6 +13,7 @@ function FilesOpendBar() {
           <FileBarItem file={fil} />
         ))}
       </div>
+
       <FileSyntaxHilighter code={clickedFile.fileContent} />
     </div>
   );
