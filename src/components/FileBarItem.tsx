@@ -15,6 +15,7 @@ interface IProps {
 
 const FileBarItem = ({ file }: IProps) => {
   const fileDispatch = useFileTreeDispatch();
+
   const { clickedFile, openedFiles } = useSelector(selectFileTreeRed);
 
   const handelOnClick = () => {
