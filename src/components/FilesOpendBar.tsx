@@ -24,7 +24,7 @@ function FilesOpendBar() {
         }}
       >
         {openedFiles.map((fil) => (
-          <FileBarItem file={fil} key={fil.id} />
+          <FileBarItem setShowMenu={setShowMenu} file={fil} key={fil.id} />
         ))}
       </div>
 
@@ -33,7 +33,9 @@ function FilesOpendBar() {
       ) : (
         <WelcomImage image="../../public/icons/vscode.svg" />
       )}
-      {showMenu && <MenueBar pos={posMenu} />}
+      {showMenu && openedFiles.length > 0 && (
+        <MenueBar setShowMenu={setShowMenu} pos={posMenu} />
+      )}
     </div>
   );
 }

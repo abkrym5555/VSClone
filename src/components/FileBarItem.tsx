@@ -3,6 +3,7 @@ import RenderFileIcon from "./RenderFileIcon";
 import CloseIcon from "./SVG/CloseIcon";
 import {
   selectFileTreeRed,
+  setIdItemBar,
   setOnClickedFile,
   setOpenedFiles,
 } from "../features/fileTree/fileTree";
@@ -11,12 +12,14 @@ import { useSelector } from "react-redux";
 
 interface IProps {
   file: IFile;
+  setShowMenu: (val: boolean) => void;
 }
 
-const FileBarItem = ({ file }: IProps) => {
+const FileBarItem = ({ file, setShowMenu }: IProps) => {
   const fileDispatch = useFileTreeDispatch();
 
   const { clickedFile, openedFiles } = useSelector(selectFileTreeRed);
+  const disSetItemBarId = useFileTreeDispatch();
 
   const handelOnClick = () => {
     const { name, content } = file;
@@ -30,6 +33,7 @@ const FileBarItem = ({ file }: IProps) => {
   };
 
   const handelRemoveItemBar = () => {
+    setShowMenu(false);
     const newBarItems = openedFiles.filter((fl) => fl.id !== file.id);
     fileDispatch(setOpenedFiles(newBarItems));
     const last = newBarItems[newBarItems.length - 1];
@@ -46,6 +50,10 @@ const FileBarItem = ({ file }: IProps) => {
     <div
       className={`max-w-3xl flex items-center p-2  border-t-2 ${clickedFile.activeTabId === file.id ? "border-cyan-700" : "border-transparent"}`}
       onClick={handelOnClick}
+      onContextMenu={(e) => {
+        e.preventDefault();
+        disSetItemBarId(setIdItemBar(file.id));
+      }}
     >
       <RenderFileIcon fname={file.name} isfolder={false} isopen={false} />
       <span className="cursor-pointer duration-300 flex justify-center items-center w-fit mx-2 p-1 rounded-md">
