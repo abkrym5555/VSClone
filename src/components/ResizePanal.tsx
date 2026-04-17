@@ -16,7 +16,7 @@ function ResizePanal() {
           <FileRecComp filetree={fileTree} />
         </div>
       </Panel>
-      <Panel>
+      <Panel collapsible={false} minSize={200}>
         <FilesOpendBar />
       </Panel>
     </Group>
