@@ -4,7 +4,7 @@ A web-based clone of Visual Studio Code, built to replicate the core editing exp
 
 ## 🚀 Live Demo
 
-**[https://vs-clonee.netlify.app/]()**
+**[Try it now](https://vs-clonee.netlify.app/)**
 
 ## ✨ Features
 
