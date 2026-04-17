@@ -29,7 +29,7 @@ function FilesOpendBar() {
       </div>
 
       {openedFiles.length ? (
-        <FileSyntaxHilighter code={clickedFile.fileContent} />
+        <FileSyntaxHilighter code={clickedFile.fileContent || ""} />
       ) : (
         <WelcomImage image="../../public/icons/vscode.svg" />
       )}
