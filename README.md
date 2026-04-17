@@ -1,73 +1,29 @@
-# React + TypeScript + Vite
+# VSClone
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web-based clone of Visual Studio Code, built to replicate the core editing experience and UI of the popular code editor directly in your browser.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**[https://vs-clonee.netlify.app/]()**
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **File Explorer**: Navigate through a mock file system, open files, and view directory structures.
+- **Code Editor**: Syntax highlighting for multiple languages.
+- **Tab Management**: Open multiple files simultaneously and easily toggle between them.
+- **Customizable Layout**: Resizable sidebar and editor panes for a personalized workflow.
+- **Responsive Design**: Optimized for a smooth user experience.
 
-## Expanding the ESLint configuration
+## 🛠️ Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** - JavaScript library for building user interfaces
+- **TypeScript** - Strongly typed programming language that builds on JavaScript
+- **Vite** - Next Generation Frontend Tooling
+- **Tailwind CSS / CSS** - For styling
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 📦 Key Packages
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **Redux Toolkit (`@reduxjs/toolkit`) & React Redux** - For global state management.
+- **React Resizable Panels (`react-resizable-panels`)** - For creating draggable and resizable editor layouts.
+- **React Syntax Highlighter (`react-syntax-highlighter`)** - To provide rich code syntax highlighting.
+- **UUID (`uuid`)** - For generating unique IDs for the file system.

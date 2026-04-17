@@ -31,7 +31,7 @@ function FilesOpendBar() {
       {openedFiles.length ? (
         <FileSyntaxHilighter code={clickedFile.fileContent || ""} />
       ) : (
-        <WelcomImage image="../../public/icons/vscode.svg" />
+        <WelcomImage image="/icons/vscode.svg" />
       )}
       {showMenu && openedFiles.length > 0 && (
         <MenueBar setShowMenu={setShowMenu} pos={posMenu} />
